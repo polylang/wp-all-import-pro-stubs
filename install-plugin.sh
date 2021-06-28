@@ -79,3 +79,5 @@ download_plugin() {
 
 # Download WP All Import Pro
 download_plugin wp-all-import-pro
+
+php fix-main-file.php

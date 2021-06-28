@@ -51508,6 +51508,407 @@ namespace Wpai\WordPress {
         }
     }
 }
+namespace {
+    /**
+     * Main plugin file, Introduces MVC pattern
+     *
+     * @singletone
+     * @author Maksym Tsypliakov <maksym.tsypliakov@gmail.com>
+     */
+    final class PMXI_Plugin
+    {
+        /**
+         * Singletone instance
+         * @var PMXI_Plugin
+         */
+        protected static $instance;
+        /**
+         * Plugin options
+         * @var array
+         */
+        protected $options = array();
+        /**
+         * Plugin root dir
+         * @var string
+         */
+        const ROOT_DIR = \WP_ALL_IMPORT_ROOT_DIR;
+        /**
+         * Plugin root URL
+         * @var string
+         */
+        const ROOT_URL = \WP_ALL_IMPORT_ROOT_URL;
+        /**
+         * Prefix used for names of shortcodes, action handlers, filter functions etc.
+         * @var string
+         */
+        const PREFIX = \WP_ALL_IMPORT_PREFIX;
+        /**
+         * Plugin file path
+         * @var string
+         */
+        const FILE = __FILE__;
+        /**
+         * Max allowed file size (bytes) to import in default mode
+         * @var int
+         */
+        const LARGE_SIZE = 0;
+        // all files will importing in large import mode
+        /**
+         * @var null
+         */
+        public static $session = \null;
+        /**
+         * @var bool
+         */
+        public static $is_csv = \false;
+        /**
+         * @var bool
+         */
+        public static $csv_path = \false;
+        /**
+         * @var bool
+         */
+        public static $is_php_allowed = \true;
+        /**
+         * @var string
+         */
+        public static $capabilities = 'manage_options';
+        /**
+         * @var string
+         */
+        public static $cache_key = '';
+        /**
+         * WP All Import logs folder
+         * @var string
+         */
+        const LOGS_DIRECTORY = \WP_ALL_IMPORT_LOGS_DIRECTORY;
+        /**
+         * WP All Import files folder
+         * @var string
+         */
+        const FILES_DIRECTORY = \WP_ALL_IMPORT_FILES_DIRECTORY;
+        /**
+         * WP All Import temp folder
+         * @var string
+         */
+        const TEMP_DIRECTORY = \WP_ALL_IMPORT_TEMP_DIRECTORY;
+        /**
+         * WP All Import uploads folder
+         * @var string
+         */
+        const UPLOADS_DIRECTORY = \WP_ALL_IMPORT_UPLOADS_DIRECTORY;
+        /**
+         * WP All Import history folder
+         * @var string
+         */
+        const HISTORY_DIRECTORY = \WP_ALL_IMPORT_HISTORY_DIRECTORY;
+        /**
+         *  Language domain key.
+         */
+        const LANGUAGE_DOMAIN = 'wp_all_import_plugin';
+        /**
+         * @var null
+         */
+        private static $hasActiveSchedulingLicense = \null;
+        /**
+         * Return singletone instance
+         * @return PMXI_Plugin
+         */
+        public static function getInstance()
+        {
+        }
+        /**
+         * @return string
+         */
+        public static function getEddName()
+        {
+        }
+        /**
+         * @return string
+         */
+        public static function getSchedulingName()
+        {
+        }
+        /**
+         * @return bool|null
+         */
+        public static function hasActiveSchedulingLicense()
+        {
+        }
+        /**
+         * Common logic for requestin plugin info fields
+         */
+        public function __call($method, $args)
+        {
+        }
+        /**
+         * Get path to plagin dir relative to wordpress root
+         * @param bool[optional] $noForwardSlash Whether path should be returned withot forwarding slash
+         * @return string
+         */
+        public function getRelativePath($noForwardSlash = \false)
+        {
+        }
+        /**
+         * Check whether plugin is activated as network one
+         * @return bool
+         */
+        public function isNetwork()
+        {
+        }
+        /**
+         * Check whether permalinks is enabled
+         * @return bool
+         */
+        public function isPermalinks()
+        {
+        }
+        /**
+         * Return prefix for plugin database tables
+         * @return string
+         */
+        public function getTablePrefix()
+        {
+        }
+        /**
+         * Return prefix for wordpress database tables
+         * @return string
+         */
+        public function getWPPrefix()
+        {
+        }
+        /**
+         * Class constructor containing dispatching logic
+         * @param string $rootDir Plugin root dir
+         * @param string $pluginFilePath Plugin main file
+         */
+        protected function __construct()
+        {
+        }
+        /**
+         * Check is current request is related to admin dashboard or cron import.
+         *
+         * @return bool
+         */
+        public function isAdminDashboardOrCronImport()
+        {
+        }
+        /**
+         * Determines is process running from cli.
+         *
+         * @return bool
+         */
+        public function isCli()
+        {
+        }
+        /**
+         * Setup required directory.
+         */
+        public function setup_allimport_dir()
+        {
+        }
+        /**
+         *  Init langiage text domain.
+         */
+        public function init()
+        {
+        }
+        /**
+         * @param $message
+         */
+        public function showNoticeAndDisablePlugin($message)
+        {
+        }
+        /**
+         * @param $message
+         */
+        public function showNotice($message)
+        {
+        }
+        /**
+         * @param $message
+         * @param $noticeId
+         */
+        public function showDismissibleNotice($message, $noticeId)
+        {
+        }
+        /**
+         * convert imports options
+         * compatibility with version 4.0
+         */
+        public function fix_options()
+        {
+        }
+        /**
+         * @param $options
+         */
+        public function ver_4_transition_fix(&$options)
+        {
+        }
+        /**
+         * @param $options
+         * @param $version
+         */
+        public function ver_4x_transition_fix(&$options, $version)
+        {
+        }
+        /**
+         * pre-dispatching logic for admin page controllers
+         */
+        public function adminInit()
+        {
+        }
+        /**
+         * @param $class
+         * @return string
+         */
+        function getAdminBodyClass($class)
+        {
+        }
+        /**
+         * Dispatch shorttag: create corresponding controller instance and call its index method
+         * @param array $args Shortcode tag attributes
+         * @param string $content Shortcode tag content
+         * @param string $tag Shortcode tag name which is being dispatched
+         * @return string
+         */
+        public function shortcodeDispatcher($args, $content, $tag)
+        {
+        }
+        /**
+         * @var null
+         */
+        static $buffer = \NULL;
+        /**
+         * @var null
+         */
+        static $buffer_callback = \NULL;
+        /**
+         * Dispatch admin page: call corresponding controller based on get parameter `page`
+         * The method is called twice: 1st time as handler `parse_header` action and then as admin menu item handler
+         * @param string[optional] $page When $page set to empty string ealier buffered content is outputted, otherwise controller is called based on $page value
+         */
+        public function adminDispatcher($page = '', $action = 'index')
+        {
+        }
+        /**
+         * @param $matches
+         * @return string
+         */
+        public function replace_callback($matches)
+        {
+        }
+        /**
+         * @var null
+         */
+        protected $_admin_current_screen = \NULL;
+        /**
+         * @return null
+         */
+        public function getAdminCurrentScreen()
+        {
+        }
+        /**
+         * Autoloader
+         * It's assumed class name consists of prefix folloed by its name which in turn corresponds to location of source file
+         * if `_` symbols replaced by directory path separator. File name consists of prefix folloed by last part in class name (i.e.
+         * symbols after last `_` in class name)
+         * When class has prefix it's source is looked in `models`, `controllers`, `shortcodes` folders, otherwise it looked in `core` or `library` folder
+         *
+         * @param string $className
+         * @return bool
+         */
+        public function autoload($className)
+        {
+        }
+        /**
+         * Get plugin option
+         * @param string[optional] $option Parameter to return, all array of options is returned if not set
+         * @return mixed
+         */
+        public function getOption($option = \NULL)
+        {
+        }
+        /**
+         * Update plugin option value
+         * @param string $option Parameter name or array of name => value pairs
+         * @param mixed[optional] $value New value for the option, if not set than 1st parameter is supposed to be array of name => value pairs
+         * @return array
+         */
+        public function updateOption($option, $value = \NULL)
+        {
+        }
+        /**
+         * @param $value
+         * @return string
+         */
+        public static function encode($value)
+        {
+        }
+        /**
+         * @param $encoded
+         * @return mixed
+         */
+        public static function decode($encoded)
+        {
+        }
+        /**
+         * Plugin activation logic
+         */
+        public function activation()
+        {
+        }
+        /**
+         * Load Localisation files.
+         *
+         * Note: the first-loaded translation file overrides any following ones if the same translation is present
+         *
+         * @access public
+         * @return void
+         */
+        public function load_plugin_textdomain()
+        {
+        }
+        /**
+         * @return bool
+         * @throws Exception
+         */
+        public function fix_db_schema()
+        {
+        }
+        /**
+         * Method returns default import options, main utility of the method is to avoid warnings when new
+         * option is introduced but already registered imports don't have it
+         */
+        public static function get_default_import_options()
+        {
+        }
+        /*
+         * Convert csv to xml
+         */
+        /**
+         * @param $csv_url
+         * @return string
+         */
+        public static function csv_to_xml($csv_url)
+        {
+        }
+        /**
+         * @return bool
+         */
+        public static function is_ajax()
+        {
+        }
+        /**
+         * Returns ID of current import.
+         *
+         * @return int|bool
+         */
+        public static function getCurrentImportId()
+        {
+        }
+    }
+}
 /*
  * This file is part of Composer.
  *
@@ -51875,6 +52276,12 @@ namespace {
     {
     }
     function renderButton($buttonText, $isWizard, $continue = \false, $saveOnly = \false)
+    {
+    }
+    /**
+     *
+     */
+    function wp_all_import_pro_updater()
     {
     }
 }
